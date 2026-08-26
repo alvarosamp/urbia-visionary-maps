@@ -127,14 +127,14 @@ export const celulas: Celula[] = (() => {
       const score = Math.round(38 + base * 58);
       out.push({
         id: `88a8100${i.toString(16).padStart(3, "0")}ffff`,
-        bairro: bairros[Math.floor(pseudo(i + 7) * bairros.length)],
+        bairro: bairros[Math.floor(pseudo(i + 7) * bairros.length)]!,
         score,
         liquidez: Math.round(30 + pseudo(i + 13) * 68),
         potencial: Math.round(25 + pseudo(i + 29) * 74),
         ndvi: Number((0.08 + pseudo(i + 41) * 0.62).toFixed(2)),
         ndbi: Number((-0.2 + pseudo(i + 53) * 0.6).toFixed(2)),
         precoM2: Math.round(1400 + pseudo(i + 61) * 4200),
-        zoneamento: zonas[Math.floor(pseudo(i + 71) * zonas.length)],
+        zoneamento: zonas[Math.floor(pseudo(i + 71) * zonas.length)]!,
         coefAproveitamento: Number((1 + pseudo(i + 83) * 3).toFixed(1)),
         q,
         r,
