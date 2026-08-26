@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import mapaH3 from "@/assets/mapa-h3.jpg";
 
 export const Route = createFileRoute("/")({
@@ -128,12 +128,12 @@ function Index() {
             <a href="#acesso" className="rounded px-3 py-1 transition-colors hover:bg-accent">
               Acesso
             </a>
-            <a
-              href="#acesso"
+            <Link
+              to="/app"
               className="rounded-sm bg-foreground px-4 py-2 text-background transition-colors hover:bg-primary"
             >
-              Demo Profissional
-            </a>
+              Abrir Plataforma
+            </Link>
           </div>
         </div>
       </nav>
@@ -157,12 +157,12 @@ function Index() {
               com explicabilidade de score para cada metro quadrado.
             </p>
             <div className="flex flex-col gap-4 sm:flex-row">
-              <a
-                href="#acesso"
+              <Link
+                to="/app"
                 className="bg-foreground px-8 py-4 text-center text-sm font-bold uppercase tracking-widest text-background ring-primary ring-offset-2 transition-all duration-300 hover:bg-primary focus:ring-2"
               >
                 Iniciar Análise
-              </a>
+              </Link>
               <a
                 href="#capacidades"
                 className="border border-foreground/20 px-8 py-4 text-center text-sm font-bold uppercase tracking-widest transition-all hover:bg-accent"

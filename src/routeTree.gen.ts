@@ -12,7 +12,10 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AppRouteImport } from './routes/app'
 import { Route as AppIndexRouteImport } from './routes/app.index'
+import { Route as AppCompararRouteImport } from './routes/app.comparar'
+import { Route as AppConfiguracoesRouteImport } from './routes/app.configuracoes'
 import { Route as AppOportunidadesRouteImport } from './routes/app.oportunidades'
+import { Route as AppRelatoriosRouteImport } from './routes/app.relatorios'
 import { Route as AppScoreRouteImport } from './routes/app.score'
 
 const IndexRoute = IndexRouteImport.update({
@@ -30,9 +33,24 @@ const AppIndexRoute = AppIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AppRoute,
 } as any)
+const AppCompararRoute = AppCompararRouteImport.update({
+  id: '/comparar',
+  path: '/comparar',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppConfiguracoesRoute = AppConfiguracoesRouteImport.update({
+  id: '/configuracoes',
+  path: '/configuracoes',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppOportunidadesRoute = AppOportunidadesRouteImport.update({
   id: '/oportunidades',
   path: '/oportunidades',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppRelatoriosRoute = AppRelatoriosRouteImport.update({
+  id: '/relatorios',
+  path: '/relatorios',
   getParentRoute: () => AppRoute,
 } as any)
 const AppScoreRoute = AppScoreRouteImport.update({
@@ -44,13 +62,19 @@ const AppScoreRoute = AppScoreRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
+  '/app/comparar': typeof AppCompararRoute
+  '/app/configuracoes': typeof AppConfiguracoesRoute
   '/app/oportunidades': typeof AppOportunidadesRoute
+  '/app/relatorios': typeof AppRelatoriosRoute
   '/app/score': typeof AppScoreRoute
   '/app/': typeof AppIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/app/comparar': typeof AppCompararRoute
+  '/app/configuracoes': typeof AppConfiguracoesRoute
   '/app/oportunidades': typeof AppOportunidadesRoute
+  '/app/relatorios': typeof AppRelatoriosRoute
   '/app/score': typeof AppScoreRoute
   '/app': typeof AppIndexRoute
 }
@@ -58,16 +82,43 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
+  '/app/comparar': typeof AppCompararRoute
+  '/app/configuracoes': typeof AppConfiguracoesRoute
   '/app/oportunidades': typeof AppOportunidadesRoute
+  '/app/relatorios': typeof AppRelatoriosRoute
   '/app/score': typeof AppScoreRoute
   '/app/': typeof AppIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/app' | '/app/oportunidades' | '/app/score' | '/app/'
+  fullPaths:
+    | '/'
+    | '/app'
+    | '/app/comparar'
+    | '/app/configuracoes'
+    | '/app/oportunidades'
+    | '/app/relatorios'
+    | '/app/score'
+    | '/app/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/app/oportunidades' | '/app/score' | '/app'
-  id: '__root__' | '/' | '/app' | '/app/oportunidades' | '/app/score' | '/app/'
+  to:
+    | '/'
+    | '/app/comparar'
+    | '/app/configuracoes'
+    | '/app/oportunidades'
+    | '/app/relatorios'
+    | '/app/score'
+    | '/app'
+  id:
+    | '__root__'
+    | '/'
+    | '/app'
+    | '/app/comparar'
+    | '/app/configuracoes'
+    | '/app/oportunidades'
+    | '/app/relatorios'
+    | '/app/score'
+    | '/app/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -98,11 +149,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppIndexRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/comparar': {
+      id: '/app/comparar'
+      path: '/comparar'
+      fullPath: '/app/comparar'
+      preLoaderRoute: typeof AppCompararRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/configuracoes': {
+      id: '/app/configuracoes'
+      path: '/configuracoes'
+      fullPath: '/app/configuracoes'
+      preLoaderRoute: typeof AppConfiguracoesRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/oportunidades': {
       id: '/app/oportunidades'
       path: '/oportunidades'
       fullPath: '/app/oportunidades'
       preLoaderRoute: typeof AppOportunidadesRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/relatorios': {
+      id: '/app/relatorios'
+      path: '/relatorios'
+      fullPath: '/app/relatorios'
+      preLoaderRoute: typeof AppRelatoriosRouteImport
       parentRoute: typeof AppRoute
     }
     '/app/score': {
@@ -116,13 +188,19 @@ declare module '@tanstack/react-router' {
 }
 
 interface AppRouteChildren {
+  AppCompararRoute: typeof AppCompararRoute
+  AppConfiguracoesRoute: typeof AppConfiguracoesRoute
   AppOportunidadesRoute: typeof AppOportunidadesRoute
+  AppRelatoriosRoute: typeof AppRelatoriosRoute
   AppScoreRoute: typeof AppScoreRoute
   AppIndexRoute: typeof AppIndexRoute
 }
 
 const AppRouteChildren: AppRouteChildren = {
+  AppCompararRoute: AppCompararRoute,
+  AppConfiguracoesRoute: AppConfiguracoesRoute,
   AppOportunidadesRoute: AppOportunidadesRoute,
+  AppRelatoriosRoute: AppRelatoriosRoute,
   AppScoreRoute: AppScoreRoute,
   AppIndexRoute: AppIndexRoute,
 }
