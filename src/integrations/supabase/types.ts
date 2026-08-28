@@ -14,7 +14,125 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      areas_salvas: {
+        Row: {
+          created_at: string
+          h3: string
+          id: string
+          nota: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          h3: string
+          id?: string
+          nota?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          h3?: string
+          id?: string
+          nota?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "areas_salvas_h3_fkey"
+            columns: ["h3"]
+            isOneToOne: false
+            referencedRelation: "celulas"
+            referencedColumns: ["h3"]
+          },
+        ]
+      }
+      celulas: {
+        Row: {
+          acessibilidade: number
+          bairro: string
+          coef_aproveitamento: number
+          created_at: string
+          domicilios: number
+          h3: string
+          infraestrutura: number
+          liquidez: number
+          ndbi: number
+          ndvi: number
+          populacao: number
+          potencial: number
+          preco_m2: number
+          risco: number
+          score: number
+          zoneamento: string
+        }
+        Insert: {
+          acessibilidade: number
+          bairro: string
+          coef_aproveitamento: number
+          created_at?: string
+          domicilios: number
+          h3: string
+          infraestrutura: number
+          liquidez: number
+          ndbi: number
+          ndvi: number
+          populacao: number
+          potencial: number
+          preco_m2: number
+          risco: number
+          score: number
+          zoneamento: string
+        }
+        Update: {
+          acessibilidade?: number
+          bairro?: string
+          coef_aproveitamento?: number
+          created_at?: string
+          domicilios?: number
+          h3?: string
+          infraestrutura?: number
+          liquidez?: number
+          ndbi?: number
+          ndvi?: number
+          populacao?: number
+          potencial?: number
+          preco_m2?: number
+          risco?: number
+          score?: number
+          zoneamento?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          email: string | null
+          id: string
+          nome: string | null
+          organizacao: string | null
+          perfil: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          email?: string | null
+          id: string
+          nome?: string | null
+          organizacao?: string | null
+          perfil?: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string | null
+          id?: string
+          nome?: string | null
+          organizacao?: string | null
+          perfil?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
